@@ -12,8 +12,17 @@ public class Robbery {
 		int[] sizes,
 		int[] worths
 	) {
-		// fill in here, change the return
-			return 0;
+			//base case
+			if(capacity=0) {
+				return 0;
+			}
+
+			var n = sizes.length;
+			if(sizes[n-1]>capacity) {
+				return maximizeRobWorthRecur(capacity,sizes[n-1],worths[n-1]);
+			}
+
+			else return max(worths[n-1] + maximizeRobWorthRecur(capacity-sizes[n-1], sizes[n-1], worths[n-1],), maximizeRobWorthRecur(capacity, sizes[n-1], worths[n-1]));
 	}
 
 	public int maximizeRobWorthBottomUp(
